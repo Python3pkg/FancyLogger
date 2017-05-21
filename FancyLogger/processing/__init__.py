@@ -288,7 +288,7 @@ class MultiprocessingLogger(Process):
         :return: Length of the longest task prefix in character unit.
         """
         longest = 0
-        for key, t in self.tasks.items():
+        for key, t in list(self.tasks.items()):
             size = len(t.prefix)
             if size > longest:
                 longest = size
@@ -412,7 +412,7 @@ class MultiprocessingLogger(Process):
             # If a task has been deleted, recalculate the maximum prefix length to keep progress bars aligned
             self.longest_bar_prefix_size = self.longest_bar_prefix_value()
 
-        for task_id, task in self.tasks.items():
+        for task_id, task in list(self.tasks.items()):
 
             # If a task has completed, force its value to its maximum to prevent progress bar overflow
             # Then start its timeout chrono

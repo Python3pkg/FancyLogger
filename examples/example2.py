@@ -38,7 +38,7 @@ class WorkerClass(Process):
         self.logger = logger
 
         # Define a random progress bar
-        self.enumerable_data = range(randrange(50, 500))
+        self.enumerable_data = list(range(randrange(50, 500)))
 
     def run(self):
         try:
